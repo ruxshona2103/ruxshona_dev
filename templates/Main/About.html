@@ -1,0 +1,90 @@
+{% load static %}
+
+<!--About Section Start-->
+<section id="about" class="about-section pt-page">
+    <div class="section-container">
+        <!--Page Heading-->
+        <div class="page-heading">
+            <span class="icon"><i class="lnr lnr-user"></i></span>
+            <h2>About Me.</h2>
+        </div>
+
+        <!-- About Info Row Start-->
+        <div class="row about mb-70">
+
+            <div class="col-lg-8">
+                <!--Personal Intro-->
+                <h3 class="mb-20">{{ about.title }}</h3>
+                {{ about.body|safe }}
+
+                <!--Signature Image-->
+                <div class="signature mt-20">
+                    <img src="{% static 'img/signature-black.png' %}" alt="">
+                </div>
+            </div>
+
+            <!--Personal Info-->
+            <div class="col-lg-4">
+                <div class="about-info">
+                    <h3 class="mb-20">Personal Information</h3>
+                    <ul>
+                        <li><span class="title">Name</span><span class="value">{{ about.name }}</span></li>
+                        <li><span class="title">Age</span><span class="value">{{ about.age }}</span></li>
+                        <li><span class="title">Address</span><span class="value">{{ about.address }}</span></li>
+                        <li><span class="title">Email</span><span class="value">{{ about.email }}</span></li>
+                        <li><span class="title">Phone</span><span class="value">{{ about.phone }}</span></li>
+                    </ul>
+                    <div class="resume-button mt-30">
+                        <a class="btn-main" href="{{ about.resume_link.url }}">Download Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Info Row End-->
+
+        <!--Services Row Start-->
+        <div class="row services mb-30">
+            <div class="col-md-12">
+                <div class="subheading">
+                    <h3>Services</h3>
+                </div>
+            </div>
+
+            {% for i in services %}
+                <!--Service Item-->
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item">
+                        <div class="icon"><i class="{{ i.i_class }}"></i></div>
+                        <h4>{{ i.title }}</h4>
+                        <p>{{ i.body }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!--Services Row End-->
+
+        <!--Clients Row Start-->
+        <div class="row clients mb-70">
+            <div class="col-md-12">
+                <div class="subheading">
+                    <h3>Clients</h3>
+                </div>
+            </div>
+
+            <div class="owl-carousel owl-theme">
+
+                {% for i in clients %}
+                    <!--Client Logo-->
+                    <div class="client-logo">
+                        <a href="{{ i.href }}">
+                            <img src="{{ i.image.url }}" alt="{{ i.title }}">
+                        </a>
+                            </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!--Clients Row End-->
+    </div>
+</section>
+<!--About Section Start-->
